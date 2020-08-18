@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <title>Ha Noi Store</title>
+</head>
+
+<body>
+
+    <style type="text/css">
+        /* :: 8.0 Popular Products Area CSS */
+        .single-product-wrapper {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 50px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .single-product-wrapper:hover,
+        .single-product-wrapper:active {
+
+            transition: all 3s;
+            background-color: #d3cece;
+
+        }
+
+        .single-product-wrapper .product-img {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .single-product-wrapper .product-img img {
+            width: 100%;
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+        }
+
+        .single-product-wrapper .product-img .hover-img {
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .single-product-wrapper .product-img .product-badge {
+            height: 25px;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: "Ubuntu", sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 0 10px;
+            display: inline-block;
+            line-height: 25px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+
+        .single-product-wrapper .product-img .product-badge.offer-badge {
+            background-color: #dc0345;
+        }
+
+        .single-product-wrapper .product-img .product-badge.new-badge {
+            background-color: #0315ff;
+        }
+
+        .single-product-wrapper .product-img .product-favourite a {
+            position: absolute;
+            height: 25px;
+            width: 45px;
+            font-size: 14px;
+            color: #ccc;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            line-height: 25px;
+            background-color: #ffffff;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .single-product-wrapper .product-img .product-favourite a.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .single-product-wrapper .product-description {
+            position: relative;
+            z-index: 1;
+            padding-top: 25px;
+        }
+
+        .single-product-wrapper .product-description span {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: black;
+            margin-bottom: 15px;
+            letter-spacing: 0.75px;
+            font-weight: 600;
+            margin-left: 20px;
+        }
+
+        .single-product-wrapper .product-description h6 {
+            color: #222222;
+            margin-bottom: 5px;
+        }
+
+        .single-product-wrapper .product-description p {
+            margin-bottom: 0;
+            font-size: 14px;
+            font-family: "Ubuntu", sans-serif;
+            font-weight: 700;
+            color: #000000;
+            margin-left: 20px;
+        }
+
+        .single-product-wrapper .product-description p span {
+            font-size: 14px;
+            font-family: "Ubuntu", sans-serif;
+            font-weight: 700;
+            color: #aaaaaa;
+            margin-right: 10px;
+            text-decoration: line-through;
+
+        }
+
+        .single-product-wrapper .product-description .hover-content {
+            position: absolute;
+            width: calc(100% - 40px);
+            top: -70px;
+            left: 20px;
+            right: 20px;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+        }
+
+        .single-product-wrapper .product-description .hover-content .essence-btn {
+            width: 25%;
+            border: 1px solid rgb(0, 0, 0);
+            margin-left: 100px;
+            background-color: white;
+
+        }
+
+        .single-product-wrapper .favme {
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .single-product-wrapper .favme.active {
+            color: #dc0345 !important;
+        }
+
+        .single-product-wrapper .favme.is_animating {
+            animation: favme-anime 0.5s;
+        }
+
+        .single-product-wrapper:hover .product-img .hover-img {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .single-product-wrapper:hover .product-img .product-favourite a {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .single-product-wrapper:hover .hover-content {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #navigation li {
+            display: inline;
+        }
+
+        #navigation {
+            background-color: #f0f3f5;
+            text-align: right;
+            padding-right: 50px;
+            margin-top: -10px;
+        }
+
+        #navigation li a {
+            text-decoration: none;
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 150%;
+            margin-right: 20px;
+            color: black;
+            transition: all 0.3s;
+        }
+
+        #navigation li :hover,
+        #navigation li :active {
+            text-decoration: underline;
+            color: #ee9312;
+        }
+
+        #navigation h1 {
+            text-align: left;
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+            display: inline-block;
+            font-size: 200%;
+            margin-right: 700px;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-12">
+                <ul id="navigation">
+                    <a href="/">
+                        <h1 style="color: black;">Ha Noi Store</h1>
+                    </a>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="insert">New Product</a></li>
+                    <form action="/doSearch" method="post">
+                        <input style="width: 30%; margin-left: 850px;" type="text" class="form-control" name="txtName"
+                            id="" placeholder="Search...">
+                        <input type="submit" class="btn btn-default" value="Search">
+                    </form>
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="row">
+            {{#each model}}
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-product-wrapper">
+                    <!-- Product Image -->
+                    <div class="product-img">
+                        <img style="height: 255px" src="{{Image}}" alt="">
+                        <!-- Hover Thumb -->
+                    </div>
+                    <!-- Product Description -->
+                    <div class="product-description">
+                        <h3 style="margin-left: 20px;">{{name}}</h3>
+                        <span>{{Description}}</span>
+                        <br>
+                        <br>
+                        <p class="product-price">{{Price}} VNĐ</p>
+                        <!-- Hover Content -->
+                        <div class="hover-content">
+                            <!-- Add to Cart -->
+                            <div class="add-to-cart-btn">
+                                <a href="/delete?id={{_id}}" class="btn essence-btn">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Insert Student</title>
+</head>
+
+<body
+    style="background-image: url(https://previews.123rf.com/images/goodmoments/goodmoments1802/goodmoments180200137/96716785-top-view-on-colorful-toy-bricks-on-a-white-wooden-background-toys-in-the-table.jpg);">
+    <form action="/doInsert" method="POST"
+        style="width: 30%; margin-left: 475px; border: 1px solid; padding: 10px; border-radius: 10px;">
+        <div class="form-group">
+            <label style="color: black;" for="name">Name of product:</label>
+            <label id="lblNameError" style="color:red">{{model.nameError}}</label>
+            <input type="text" class="form-control" name="txtName" id="name">
+        </div>
+        <div class="form-group">
+            <label style="color: black;" for="price">Price:</label>
+            <label id="lblNameError" style="color:red">{{model.priceError}}</label>
+            <input type="text" class="form-control" name="txtPrice" id="price">
+        </div>
+        <div class="form-group">
+            <label style="color: black;" for="image">image:</label>
+            <input type="text" class="form-control" name="txtImage" id="image">
+        </div>
+        <div class="form-group">
+            <label style="color: black;" for="description">Description:</label>
+            <input type="text" class="form-control" name="txtDes" id="des">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+</body>
+
+</html>
